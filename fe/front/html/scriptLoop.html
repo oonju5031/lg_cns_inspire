@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        반복문
+        - forEach , for ~ in, for ~ of
+        - 배열과 연결해서 사용함.
+        - 특정 로직을 반복할 때 사용하는 문법 
+        for(var idx = 0 ; idx <= 10  ; idx++  ) {
+            로직구현
+        }
+        */
+        console.log("[debug] >>>> loop "); 
+        for(var idx = 0 ; idx < 10 ; idx++) {
+            console.log(`idx = ${idx}`); 
+        }
+        
+        console.log("[debug] >>>> forEach "); 
+        let ary = [10, 20, 30, 40, 50] ;
+        // for(var idx = 0 ; idx < ary.length ; idx++) {
+        //     console.log(`idx = ${idx} , value = ${ary[idx]}`);  
+        // }
+        ary.forEach((value, idx) => {
+            console.log(`idx = ${idx} , value = ${value}`);   
+        })
+        console.log("[debug] >>>> for ~ in : 인덱스 순회할 때 사용");  
+        for(var key in ary) {
+            console.log(`idx = ${key} , value = ${ary[key]}`);  
+        } 
+        obj = {
+            name : 'jslim',
+            age  : 24,
+            isMarriage : true,
+            address : 'seoul',
+            msg : 'hi~~',
+            arr : [],
+            instance : { 'fruit' : '귤' }
+        }        
+        for(var key in obj) {
+            console.log(`key = ${key} , data = ${obj[key]}`) ;   
+        }
+        console.log("[debug] >>>> for ~ of : ES6으로 값을 탐색할 때 사용함.");
+        console.log("[debug] >>>> 조건) iterator 메서드를 가져야 함."); 
+        console.log("[debug] >>>> 조건) iterator 메서드가 객체를 반환해야 함."); 
+        // error 
+        // for(var prop of obj) {
+        //     console.log(`prop = ${prop}`) ;   
+        // } 
+        for(var prop of ary) {
+            console.log(`prop = ${prop}`) ;   
+        } 
+
+    </script>
+</body>
+</html>

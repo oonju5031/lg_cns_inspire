@@ -1,0 +1,28 @@
+body {
+    background-color: aqua;
+    font-family: Arial ;
+    margin  : 0 ; 
+    padding : 0;
+    
+}
+
+.cls-header {
+    background-color: red ; 
+}
+
+
+#section {
+    background-color: blue ; 
+    display: grid ; 
+}
+
+article {
+    background-color: yellowgreen ; 
+    border-radius: 12px ;
+    margin: 10px ;
+}
+
+article h2 {
+    color: white ;
+    padding : 6px ;
+}

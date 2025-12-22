@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--  
+    mediaQuery? 해상도에 따른 컴포넌트 배치 
+    최신모바일 : 320px ~ 430px
+    mobile : max 767px
+    t : 768 ~ 1023px
+    d : 1024px ~ 
+    단위 : rem(1rem = 16px), %, 1vw == 1%  1vh == 1%, flex 
+    -->
+    <style>
+        @media screen and (min-width: 768px) and (max-width: 1023px) {
+            body {
+                display: flex ; 
+                background: url('../img/bg-light.jpg') no-repeat ;
+                background-size: cover ; 
+                justify-content: center ; 
+                align-items: center ;
+                height: 100vh ; 
+            }        
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

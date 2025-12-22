@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const promise = new Promise((resolve, reject) => {
+            setTimeout( () => {
+                resolve( {name : 'jslim', camp : 'am inspire camp 3th'} ) ;
+                // reject('에러 발생'); 
+            } , 1000); 
+        })
+        console.log("[debug] >>> Promise(resolve, reject) " , promise); 
+        promise.then( response => {
+            console.log("[debug] >>> response " , response);  
+        
+        });
+        promise.catch( error => {
+            console.log("[debug] >>> response " , error);  
+        
+        });
+    </script>
+</body>
+</html>

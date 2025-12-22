@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link   href="../css/deck.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    
+    <h2>사용자 목록 Deck</h2> 
+    <div id="cardContainer" class="container">
+
+    </div>
+
+    <script>
+        // 사용자 데이터 정의 
+        const users = [
+            {
+                name  : '섭섭해',
+                age   : 25,
+                phone : '010-1234-1234' 
+            },
+            {
+                name  : '임섭순',
+                age   : 25,
+                phone : '010-1234-1234' 
+            },
+            {
+                name  : '조보름',
+                age   : 25,
+                phone : '010-1234-1234' 
+            },
+            {
+                name  : '박명환',
+                age   : 25,
+                phone : '010-1234-1234' 
+            },
+        ]
+        /*
+        Quiz)
+        - 카드컨테이너를 선택
+        - 반복구문을 이용해서
+        - 카드 생성(div) : h3(name), span(age), span(phone)
+        - 카드에 생성된 3개의 요소를 추가 
+        - 선택된 카드컨테이너에 카드를 추가 
+
+        - 삭제버튼 추가하고 
+        - 삭제버튼 클릭시 해당 카드를 삭제하고 화면을 재 렌더링하고 싶다면?
+        */    
+
+        const container = document.querySelector("#cardContainer") ;
+        
+        function rending() {
+            container.innerHTML = '' ;
+            
+            users.forEach( (user, index) => {
+
+                const card   = document.createElement('div');
+                card.className = 'card' ;
+
+                const name   = document.createElement('h3');
+                name.textContent = user.name ;
+                const age    = document.createElement('p');
+                age.innerHTML = `<span class='label'>${user.age}</span>` ;
+                const phone  = document.createElement('p');
+                phone.innerHTML = `<span class='label'>${user.phone}</span>` ;
+
+                card.appendChild(name);
+                card.appendChild(age);
+                card.appendChild(phone); 
+
+                // 삭제버튼 생성 및 버튼 클릭시 배열에서 데이터 삭제
+                const delBtn = document.createElement('button') ;
+                delBtn.className = 'btn' ;
+                delBtn.textContent = '삭제' ;
+                
+                // 삭제버튼 이벤트 등록 
+                delBtn.onclick = (e) => {
+                    // case01
+                    // window.alert(`delete button click ${e.target}`); 
+                    // e.target.parentNode.remove(); 
+                    
+                    // case02
+                    // card.remove(card) ;
+
+                    // case03 
+                    users.splice(index , 1);
+                    rending() ;
+                }
+
+                card.appendChild(delBtn);
+
+                container.appendChild(card); 
+
+            })
+        }
+
+        rending(); 
+    </script>
+</body>
+</html>

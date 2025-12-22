@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../css/user.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="user-container" id="container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        /*
+        Quiz)
+        https://jsonplaceholder.typicode.com/users
+        - 위 endpoint 를 이용해서 통신
+        - 데이터를 출력 
+        - 임의의 몆개의 속성을 추출해서 본인이 원하는 스타일 적용 
+        */
+        const fetchProd = async () => {
+            await axios.get('https://jsonplaceholder.typicode.com/users')
+            .then(response => {
+                console.log(">>> response : " , response.data) ;
+                const ary  = response.data ;
+                const prd = document.querySelector('#container'); 
+                ary.forEach( (data, idx) => {
+                    const card = document.createElement("div");
+                    card.className = "user-card";
+
+                    card.innerHTML = `
+                        <h3>${data.name}</h3>
+                        <p><strong>Email:</strong> ${data.email}</p>
+                        <p><strong>Phone:</strong> ${data.phone}</p>
+                    `;
+
+                    container.appendChild(card);
+                    
+                });
+            })
+            .catch(err => {
+                window.alert(err) ;
+            }) ;
+
+        }
+        fetchProd() ;
+    </script>
+</body>
+</html>

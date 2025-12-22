@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div>
+        <h1>에디오피아 커피</h1>
+        <img    src="../img/coffee-blue.jpg"
+                width="200px" 
+                height="200px" >
+    </div>
+    <div>
+        <!--         
+        <button type="button" onclick="handler('엘지씨앤에스 커피', 'coffee-pink.jpg')">헤딩과 이미지속성 변경</button>
+        -->
+        <button type="button" id="btn">헤딩과 이미지속성 변경</button>
+        
+    </div>
+
+    <script>
+        /*
+        요구사항
+        - step01) 버튼의 이벤트를 감지하는 함수 정의
+        - step02) 버튼의 이벤트 발생시 h1, img 접근
+        - step03) img src 속성에 접근해서 이미지를 coffee-pink.jpg 변경
+        - step03) h1 헤딩은 '엘지씨앤에스 커피' 변경 
+
+        hint) 특정영역에 text 삽입시 : innerText , textContent, innerHTML 
+        */
+
+        // case01
+        const handler = (heading, imgSrc) => {
+            console.log(`debug >>> heading ${heading}`);
+            console.log(`debug >>> imgSrc ${imgSrc}`);
+            let headingNode = document.querySelector('body > div > h1');
+            let imgNode     = document.querySelector('body > div > img');
+            headingNode.textContent = heading ;
+            imgNode.src = `../img/${imgSrc}` ; 
+
+        }
+
+        //case02
+        // let btn = document.querySelector("#btn"); 
+        // btn.onclick = () => {
+        //     let headingNode = document.querySelector('body > div > h1');
+        //     let imgNode     = document.querySelector('body > div > img');
+        //     headingNode.innerHTML = '<center>엘지씨앤에스 커피</center>' ;
+        //     imgNode.src = `../img/coffee-pink.jpg` ; 
+        // }
+
+        //case03
+        const eventHandler = () => {
+            let headingNode = document.querySelector('body > div > h1');
+            let imgNode     = document.querySelector('body > div > img');
+            headingNode.innerHTML = '<center>엘지씨앤에스 커피</center>' ;
+            imgNode.src = `../img/coffee-pink.jpg` ; 
+        }
+
+        btn.addEventListener('click' , () => {
+            let headingNode = document.querySelector('body > div > h1');
+            let imgNode     = document.querySelector('body > div > img');
+            headingNode.innerHTML = '<center>엘지씨앤에스 커피</center>' ;
+            imgNode.src = `../img/coffee-pink.jpg` ; 
+        }) ;
+        
+    </script>
+</body>
+</html>

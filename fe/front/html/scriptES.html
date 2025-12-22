@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="../script/main.js" type="module"></script>
+
+    <script>
+        /*
+        - var a ; // 변수의 스코프는 블럭(함수 스코프) 
+        ES6 변수 선언방식
+        - let : 한번 선언하면 다시 선언할 수 없다.
+        - const : 상수(한번 할당한 값을 변경할 수 없다.)
+                  단) 객체 또는 배열로 선언했을 때 객체의 속성이나 배열의 요소를 변경할 수 있음.
+        */
+        const obj = {
+            name : 'jslim',
+            age  : 24,
+            isMarriage : true 
+        } ;
+
+        console.log(`obj property >>> ${obj.isMarriage}`); 
+        obj.isMarriage = false ;
+        console.log(`obj property >>> ${obj.isMarriage}`); 
+
+        const ary = [] ;
+        console.log(`ary >>> ${ary}`); 
+        ary.push(10);
+        console.log(`ary >>> ${ary}`); 
+
+        console.log('>>> 변수의 스코프 '); 
+        var x = 10 ;
+        function print() {
+            var x = 100 ; 
+            console.log('>>> inner function ' , x); 
+        }
+        console.log('>>> 함수 호출 '); 
+        print() ; 
+        console.log('>>> x =  ' , x); 
+        
+        var a = 10 ; 
+        for(let a = 0 ; a < 5 ; a++) {
+            console.log(a);
+        }
+        console.log('>>> '); 
+        console.log(a) 
+        /*
+        this
+        함수
+        - 일반 함수, 익명의 함수, 람다 함수, 화살표 함수 
+        function showUp() {
+
+        } ;
+        const showUp = function() {
+
+        } ;
+        const showUp = (a,b) =>  a + b ; 
+        
+        const showUp = () => {
+
+        } ; 
+        */
+        const foo = {
+            name  : 'bar',
+            age   : 1000,
+            printThis() {
+                console.log(">>>> this ",this);
+                const innerFunc = () => {
+                    return this ; 
+                }
+                console.log(">>>> innerFunc " , innerFunc());
+            }
+        };
+        foo.printThis() ;
+        
+        /*
+        Enhanced Object Literal
+        */
+        let language = 'javascript' ; 
+        const data = {
+            language
+        }
+        console.log('>>>> Enhanced Object Literal' , data); 
+        const copy = data ; 
+        copy.language = 'html' ; 
+        console.log('>>>> Enhanced Object Literal' , data); 
+        
+        /*
+        Spread Operator 
+        - 특정객체 또는 배열의 값을 다른객체, 배열로 복제하가나 옮길 때 사용 
+        - ... 
+        */
+        const user = {
+            name : 'jslim'
+        }
+        console.log('>>>> user ' , user);
+        const newUser = {...user} ;
+        newUser.name = 'parksu' ; 
+        console.log('>>>> user ' , user);
+        
+        /*
+        구조분해(Destructuring)
+        */
+        const desc = {
+            a : 10,
+            b : 20,
+            c : 30
+        };
+        let {a,b,c} = desc ; 
+    </script>
+</body>
+</html>

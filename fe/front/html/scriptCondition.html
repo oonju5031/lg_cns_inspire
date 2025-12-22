@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        /*
+        if 조건문
+        - 주어진 조건을 만족할 때만 코드를 실행하게 하는 문법 
+        */
+        let price = 10000 ; 
+        let age   = 10 ;
+        if( age >= 19 ) {
+            console.log(`성인 인증되었습니다. 결재금액은 ${price}`);  
+        } else {
+            console.log(`미성년자 인증되었습니다. 결재금액은 ${price/2}`);   
+        }
+        /*
+        switch ~ case 
+        - 조건식이 아닌 값을 비교
+        - break 이용해서 해당 case 를 빠져나가야 함. 
+        - default : 만족하는 case 가 없을 경우 수행하는 블럭 
+        형변환 함수
+        - parseXXXXX()
+        */
+        // 자판기 : 1. 토레타 2. 게토레이 3. 생수 
+        let choiceNumber = window.parseInt( window.prompt('자판기에서 원하시는 메뉴를 선택하세요!! ') );
+        console.log('[debug] >>> prompt type ' , typeof choiceNumber); 
+
+        switch(choiceNumber) {
+            case 1 : 
+                console.log('토레타');
+                break;
+            case 2 :
+                console.log('게토레이');
+                break;
+            case 3 :
+                console.log('생수');
+                break;
+            default :
+                console.log('메뉴에 있는 번호를 입력해주세요!!'); 
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+            crossorigin="anonymous">
+    
+</head>
+<body>
+
+    <div class="container">
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="staticEmail">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword">
+            </div>
+        </div>
+
+        <div id="error"></div>
+
+        <div class="mb-3 row">
+            <div class="col-sm-10">
+                <button type="button" class="btn btn-primary" id="loginBtn">login</button>
+                <button type="reset"  class="btn btn-danger">cancel</button>
+            </div>
+        </div>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+            crossorigin="anonymous">
+    </script>
+
+    <script>
+        let loginBtn = document.querySelector('#loginBtn') ;
+        loginBtn.onclick = () => {
+            console.log("[debug] >>>> login btn click "); 
+            let email  = document.querySelector('#staticEmail').value;
+            let passwd = document.querySelector('#inputPassword').value;
+
+            if( email == '' || passwd == '' ) {
+                let err = document.querySelector('#error') ;
+                err.style.color = 'blue' ;
+                err.textContent = "이메일 또는 비번을 입력하세요";
+            } else {
+                // 로그인 성공시 통신을 도와주는 (Promise) fetch api, axios lib 
+                window.alert(`로그인 데이터 요청 ${email} - ${passwd}`); 
+            }
+        }
+
+    </script>
+</body>
+</html>

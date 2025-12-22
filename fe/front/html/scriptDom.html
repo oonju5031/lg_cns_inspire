@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <label>현재시간 : </label>
+    <span id="time"></span>
+
+
+    <script>
+        let node = document.getElementById('time');
+        console.log('debug >>>> ' , node); 
+        let current = new Date() ;
+        console.log('debug >>>> current ' , current ); 
+        
+        // document에 text 추가하고자 할 때 사용하는 속성 : textContent 
+        node.textContent = current.toLocaleDateString();
+    </script>
+</body>
+</html>

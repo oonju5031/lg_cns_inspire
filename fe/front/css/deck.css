@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;   
+    padding: 30px ; 
+}
+
+.container {
+    display: flex ; 
+    gap : 20px ;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 220px ;
+    border: 1px solid yellowgreen;
+    border-radius: 10px;
+    padding: 15px ;
+    transition: transform 0.2ms;
+}
+
+.card:hover {
+    transform: translateY(-5px); 
+}
+
+.card h3 {
+    font-size: 18px;
+}
+
+.card p {
+    font-size: 16px;
+}
+
+.label {
+    color: blue ;
+}
+
+.btn {
+    border: none ;
+    border-radius: 6px ;
+    background-color: brown ;
+    color: white ; 
+    margin-top: 15px ;
+    cursor: pointer ;
+}

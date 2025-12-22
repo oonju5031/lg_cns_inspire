@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+
+</head>
+
+<body>
+
+    <input type="text" id="name" placeholder="이름을 입력하세요" value="임정섭"> 
+    
+    <script>
+       
+        /*
+        - 변수 : 데이터를 담는 그릇 
+        - 변수선언 규칙 : 숫자로 시작할 수 없다, $, _ 특수문자만 사용할 수 있고 대소문자 구별됨.
+        - 기본타입 : 숫자(정수, 실수), 문자(열), 논리, null, undefined
+        - 참조타입(객체타입) : Object(Array, Function, etc....) 
+        - 제어구문, 반복문
+        - 함수정의하고 호출할 수 있다.
+        - es6(var | let | const) 
+        */
+
+        // 변수 정의 및 할당 
+        let msg = null ;
+        console.log("[debug] >>>> msg value " , msg) ;
+        console.log("[debug] >>>> msg type  " , typeof msg) ;
+        console.log("[debug] >>>> ==  " , typeof msg == null) ;
+        console.log("[debug] >>>> === " , typeof msg === null) ;
+        console.log("[debug] >>>> ==  " , 1 == '1' ) ;
+        console.log("[debug] >>>> === " , 1 === '1') ;
+         
+        const message = "jslim" ; 
+
+        // error -> 상수는 일정한 값을 유지하므로 재 할당할 수 없다.
+        // message = 10 ;
+
+        let name = document.querySelector('#name').value ; 
+        console.log("[debug] >>>> name " , name) ;
+        console.log("[debug] >>>> name type  " , typeof name) ;
+
+        // console.log("[debug] >>>> undefined " , age) ; 
+        
+        // NaN(Not a Number) 
+        // 수치 연산을 통해서 정상적인 값을 얻지 못할 때 발생하는 에러 
+        console.log("[debug] >>>> Nan  " , 1 - 'jslim') ;
+
+        // json == script object 
+        let obj = {
+            name  : 'jslim',
+            age   : 20,
+            major : 'cs' 
+        }
+        console.log("[debug] >>>> obj value " , obj) ;
+        console.log("[debug] >>>> obj type  " , typeof obj) ;
+        console.log("[debug] >>>> name  " , obj.name) ;
+        console.log("[debug] >>>> name  " , obj['name']) ;
+        
+        // Array 
+        let ary = [
+            {name : 'jslim'},
+            {name : 'inspire'},
+            {name : 'am'},
+            {name : 'lgcns'}
+        ]
+        console.log("[debug] >>>> ary value " , ary) ;
+        console.log("[debug] >>>> ary type  " , typeof ary) ;
+        console.log("[debug] >>>> " , ary[0]['name']) ;
+
+        // es6 : template string 
+        const str = ary[0].name 
+        console.log(`[debug] >>>> ${str}` , str) ;  
+
+        /*
+        함수 vs 메서드
+        함수란? 
+        - 특정 기능을 수행하기 위한 코드블럭 
+        - 람다식, 화살표함수, arrow function
+        */
+
+        function sumNumbers(a=10, b=10) {
+            console.log('[debug] >>> sumNumbers function call ' , a+b) ;
+            return (a+b) ;
+        }
+        let result = sumNumbers(1,2,3); 
+        console.log('[debug] >>> result ' , result) ;
+
+        // 익명의 함수 
+        let btnHandler = function() {
+            console.log('[debug] >>> 익명의 함수 ') ;
+        }
+        console.log('[debug] >>> btnHandler ' , typeof btnHandler ) ;
+        btnHandler() ;
+
+        // es6 : 표준함수 
+        let arrowFunc = () => {
+            console.log('[debug] >>> arrowFunc ') ;
+        }; 
+        arrowFunc() ; 
+        // lambda expression
+        const add = (a,b) =>  a + b ; 
+        console.log('[debug] >>> lambda ', add(10, 20) ); 
+
+
+
+    </script>    
+</body>
+
+</html>
