@@ -46,10 +46,18 @@ import reportWebVitals from './reportWebVitals';
 /* === State 관리 (hook) END === */
 
 /* === Json server + axios START === */
-import BlogJsonPage from './pages/state/BlogJsonPage'
+// import BlogJsonPage from './pages/state/BlogJsonPage'
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <BlogJsonPage />
+// );
+/* === Json server + axios END === */
+
+/* === 이벤트 처리 START === */
+import EventPage from './event/EventPage'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BlogJsonPage />
+  <EventPage />
 );
 /* === Json server + axios END === */
 
