@@ -38,12 +38,20 @@ import reportWebVitals from './reportWebVitals';
 /* === ButtonPage END */
 
 /* === State 관리 (hook) START === */
-import CapacityPage from './pages/state/CapacityPage'
+// import CapacityPage from './pages/state/CapacityPage'
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <CapacityPage />
+// );
+/* === State 관리 (hook) END === */
+
+/* === Json server + axios START === */
+import BlogJsonPage from './pages/state/BlogJsonPage'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <CapacityPage />
+  <BlogJsonPage />
 );
-/* === State 관리 (hook) END === */
+/* === Json server + axios END === */
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
