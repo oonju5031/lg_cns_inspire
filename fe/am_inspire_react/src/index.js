@@ -30,12 +30,20 @@ import reportWebVitals from './reportWebVitals';
 /* === CommentPage END */
 
 /* === ButtonPage START */
-import ButtonPage from './pages/test/ButtonPage'
+// import ButtonPage from './pages/test/ButtonPage'
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <ButtonPage />
+// );
+/* === ButtonPage END */
+
+/* === State 관리 (hook) START === */
+import CapacityPage from './pages/state/CapacityPage'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ButtonPage />
+  <CapacityPage />
 );
-/* === ButtonPage END */
+/* === State 관리 (hook) END === */
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

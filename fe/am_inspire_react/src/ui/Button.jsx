@@ -10,9 +10,9 @@ const StyledButton = styled.button`
     cursor: pointer;
 `
 
-const Button = ({title, onClick}) => {
+const Button = (props) => {
     return (
-        <StyledButton onClick={onClick}>{title}</StyledButton>
+        <StyledButton onClick={props.onClick} disabled={props.disabled}>{props.title}</StyledButton>
     )
 }
 
