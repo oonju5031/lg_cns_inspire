@@ -54,12 +54,20 @@ import reportWebVitals from './reportWebVitals';
 /* === Json server + axios END === */
 
 /* === 이벤트 처리 START === */
-import EventPage from './event/EventPage'
+// import EventPage from './event/EventPage'
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <EventPage />
+// );
+/* === 이벤트 처리 END === */
+
+/* === Router DOM START === */
+import BlogApp from './BlogApp' ;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <EventPage />
+  <BlogApp />
 );
-/* === Json server + axios END === */
+/* === Router DOM END === */
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
