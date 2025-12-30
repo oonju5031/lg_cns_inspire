@@ -81,6 +81,9 @@ const BlogRead = () => {
     const [comments, setComments] = useState([]);  // 빈 배열로 초기화
     const [comment,  setComment]  = useState("");
 
+    // token 정보 가져오기
+    const email = localStorage.getItem("token");
+
     const getBlog = async () => {
         await api.get(`/blogs/${id}?_embed=comments`)  // Embed를 이용하여 특정 게시글의 댓글을 함께 가져올 수 있다.
                 .then( (response) => {
@@ -173,36 +176,45 @@ const BlogRead = () => {
 
     return (
         <Wrapper>
-            <Container>
-                <Button title="메인 페이지"
-                        onClick={ () => {
-                            moveUrl("/blog/index");
-                        }}
+
+            {/* 데이터가 로딩되지 않은 경우 spinner를 보여준다. */}
+            { !blog.id && <Spinner />}
+            { blog.id &&
+
+                <Container>
+
+                    {email && <WelcomeMessage>{email}님 환영합니다.</WelcomeMessage>}
+
+                    <Button title="메인 페이지"
+                            onClick={ () => {
+                                moveUrl("/blog/index");
+                            }}
+                    />
+
+                <PostContainer>
+                    <TitleText>{blog.title}</TitleText>
+                    <ContentText>{blog.content}</ContentText>
+                </PostContainer>
+
+                <CommentLabel>작성된 댓글</CommentLabel>
+
+                <BlogCommentList    comments={comments || [] }  // undefined 처리
+                                    commentHandler={commentDeleteHandler}  // () => {commentHandler()}와 동일
                 />
 
-            <PostContainer>
-                <TitleText>{blog.title}</TitleText>
-                <ContentText>{blog.content}</ContentText>
-            </PostContainer>
+                <TextInput  height={14}
+                            value={comment}
+                            changeHandler={ (e) => {
+                                setComment(e.target.value);
+                            }}
+                />
 
-            <CommentLabel>작성된 댓글</CommentLabel>
+                <Button title="댓글 작성"
+                        onClick={ () => commentCreateHandler(blog.id, comment) }
+                />
 
-            <BlogCommentList    comments={comments || [] }  // undefined 처리
-                                commentHandler={commentDeleteHandler}  // () => {commentHandler()}와 동일
-            />
-
-            <TextInput  height={14}
-                        value={comment}
-                        changeHandler={ (e) => {
-                            setComment(e.target.value);
-                        }}
-            />
-
-            <Button title="댓글 작성"
-                    onClick={ () => commentCreateHandler(blog.id, comment) }
-            />
-
-            </Container>
+                </Container>
+            }
         </Wrapper>
     );
 }

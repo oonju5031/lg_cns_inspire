@@ -34,6 +34,13 @@ const Container = styled.div`
     }
 `;
 
+const WelcomeMessage = styled.div`
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #333;
+`;
+
 const BlogWrite = () => {
 
     const moveUrl = useNavigate();
@@ -42,6 +49,9 @@ const BlogWrite = () => {
     // form으로 감싸지 않았기 때문에 각 input값을 단일로 설정하여야 한다
     const [title,   setTitle]   = useState("");
     const [content, setContent] = useState("");
+
+    // token 정보 가져오기
+    const email = localStorage.getItem("token");
 
     const saveHandler = async (title, content) => {
     
@@ -64,6 +74,9 @@ const BlogWrite = () => {
     return (
         <Wrapper>
             <Container>
+
+                {email && <WelcomeMessage>{email}님 환영합니다.</WelcomeMessage>}
+
                 <TextInput  height={20}
                             value={title}
                             changeHandler={ (e) => {setTitle(e.target.value);} }

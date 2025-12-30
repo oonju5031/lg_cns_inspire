@@ -108,6 +108,14 @@ const SignIn = () => {
             });
 
             console.log(">>> axios success: ", response);
+
+            if (response.status === 200) {
+              // 인증된 사용자 정보(token)를 공유하기 위하여 localStorage에 데이터를 추가한다.
+              const email = response.data[0].email;
+              console.log(">>> token:", email);
+              localStorage.setItem("token", email);
+            }
+
             moveUrl("/blog/index");
 
         } catch( err ) {

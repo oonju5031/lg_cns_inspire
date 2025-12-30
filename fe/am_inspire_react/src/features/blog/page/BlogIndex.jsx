@@ -52,6 +52,9 @@ const BlogIndex = () => {
 
     const [ary, setAry] = useState([]);
 
+    // token 정보 가져오기
+    const email = localStorage.getItem("token");
+
     const loadData = async () => {
         try {
             const response = await api.get("/blogs");
@@ -68,10 +71,26 @@ const BlogIndex = () => {
         loadData();
     }, []);
 
+    const logoutHandler = () => {
+        localStorage.removeItem("token");
+        moveUrl("/");
+    }
+
     return (
         <Wrapper>
             <Container>
-                <Button title="글 작성하기" onClick={() => moveUrl("/blog/write")} />
+                
+                {email && <WelcomeMessage>{email}님 환영합니다.</WelcomeMessage>}
+
+                <Button title="글 작성하기"
+                        onClick={ () => {
+                            moveUrl("/blog/write")
+                        }}
+                />
+
+                <Button title="로그아웃"
+                        onClick={logoutHandler}
+                />
 
                 <BlogList blogs={ary} />
 
