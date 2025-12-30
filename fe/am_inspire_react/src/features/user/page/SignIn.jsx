@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import api from "../../../api/axios";
-import {Link} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
 
 // Container
 const Container = styled.div`
@@ -93,6 +93,8 @@ const SignIn = () => {
         setForm({...form, [name]: value});
     }
 
+    const moveUrl = useNavigate();
+
     const handlerSubmit = async (e) => {
         
         e.preventDefault();
@@ -105,8 +107,8 @@ const SignIn = () => {
                 }
             });
 
-            console.log(">>> axios success: ");
-            console.log(response);
+            console.log(">>> axios success: ", response);
+            moveUrl("/blog/index");
 
         } catch( err ) {
             console.log(">>> axios err: " , err);

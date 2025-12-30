@@ -1,0 +1,35 @@
+import {useNavigate} from "react-router-dom";
+import styled from "styled-components";
+
+
+const Wrapper = styled.div`
+    width: calc(100% - 32px);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border: 1px solid grey;
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+`;
+
+const TitleText = styled.p`
+    font-size: 20px;
+    font-weight: bold;
+`;
+
+
+const BlogItem = ({blog}) => {
+
+    const moveUrl = useNavigate();
+
+    return(
+        <Wrapper onClick={ () => {moveUrl(`/blog/read/${blog.id}`);} }>
+            <TitleText>{blog.title}</TitleText>
+        </Wrapper>
+    );
+}
+
+export default BlogItem;
