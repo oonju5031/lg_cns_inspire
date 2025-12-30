@@ -62,12 +62,20 @@ import reportWebVitals from './reportWebVitals';
 /* === 이벤트 처리 END === */
 
 /* === Router DOM START === */
-import BlogApp from './BlogApp' ;
+// import BlogApp from './BlogApp' ;
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <BlogApp />
+// );
+/* === Router DOM END === */
+
+/* === Context API START === */
+import ContextApp from './ContextApp' ;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BlogApp />
+  <ContextApp />
 );
-/* === Router DOM END === */
+/* === Context API END === */
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
