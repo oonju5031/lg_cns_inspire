@@ -70,12 +70,20 @@ import reportWebVitals from './reportWebVitals';
 /* === Router DOM END === */
 
 /* === Context API START === */
-import ContextApp from './ContextApp' ;
+// import ContextApp from './ContextApp' ;
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <ContextApp />
+// );
+/* === Context API END === */
+
+/* === Open API START === */
+import WeatherPage from './pages/openapi/WeatherPage' ;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ContextApp />
+  <WeatherPage />
 );
-/* === Context API END === */
+/* === Open API END === */
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
