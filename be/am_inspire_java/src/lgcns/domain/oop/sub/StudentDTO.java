@@ -14,4 +14,9 @@ public class StudentDTO extends PersonDTO {
         return super.personInfo() + ", ssn: " + ssn;
     }
 
+    @Override
+    public String personInfo() {
+        return super.personInfo() + ", ssn: " + ssn;
+    }
+
 }

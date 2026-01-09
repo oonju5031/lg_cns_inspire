@@ -14,4 +14,9 @@ public class TeacherDTO extends PersonDTO {
         return super.personInfo() + ", subject: " + subject;
     }
 
+    @Override
+    public String personInfo() {
+        return super.personInfo() + ", subject: " + subject;
+    }
+
 }
