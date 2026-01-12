@@ -11,4 +11,15 @@ import lombok.ToString;
 @Setter
 public class BlogRequestDTO {
     private String title, content, writer;
+
+    // 정적 팩토리 메소드 패턴
+    public static BlogResponseDTO toResponseDTO(BlogRequestDTO request) {
+
+        return BlogResponseDTO.builder()
+                            .title(request.getTitle())
+                            .content(request.getContent())
+                            .writer(request.getWriter())
+                            .build();
+    }
+    
 }
