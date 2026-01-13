@@ -1,6 +1,7 @@
 package lgcns.domain.blog.view;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import lgcns.domain.blog.ctrl.front.FrontCtrl;
@@ -90,8 +91,15 @@ public class BlogView {
         System.out.println(">>>> 특정 게시물 상세보기 <<<<");
 
         System.out.print(">>> 게시물 번호 입력 : "); 
-        int id = Integer.parseInt( scan.nextLine() ) ; 
+        int id = Integer.parseInt( scan.nextLine() );
         
+        Optional<BlogResponseDTO> item = front.read("read", id);
+
+        if (item.isPresent()) {
+            System.out.println(item);
+        } else {
+            System.out.println("id " + id + "에 해당하는 게시글을 찾지 못했습니다.");
+        }
     }
 
     public void insert() {
@@ -133,7 +141,9 @@ public class BlogView {
         System.out.print(">>> 삭제할 게시글의 아이디를 입력 : "); 
         int id = Integer.parseInt( scan.nextLine() ) ; 
 
-       
+        int deleteFlag = front.delete("delete", id);
+
+        System.out.println((deleteFlag == 1) ? "삭제 성공" : "삭제 실패");
     }
 
     /*
@@ -152,8 +162,10 @@ public class BlogView {
         System.out.print(">>> 내용 : "); 
         String content = scan.nextLine() ;
         System.out.print(">>> 게시글 번호 : "); 
-        int    id = Integer.parseInt( scan.nextLine() ) ;
+        int id = Integer.parseInt( scan.nextLine() );
         
+        int updateFlag = front.update("update", title, content, id);
+        System.out.println((updateFlag == 1) ? "수정 성공" : "수정 실패");
 
     }
 

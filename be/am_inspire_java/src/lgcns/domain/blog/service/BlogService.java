@@ -1,6 +1,7 @@
 package lgcns.domain.blog.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import lgcns.domain.blog.dao.BlogMapper;
 import lgcns.domain.blog.domain.dto.BlogRequestDTO;
@@ -30,6 +31,24 @@ public class BlogService {
         System.out.println(">>> Service search()");
 
         return dao.search(writer);
+    }
+
+    public Optional<BlogResponseDTO> read(int id) {
+        System.out.println(">>> Service read()");
+
+        return dao.findById(id);
+    }
+
+    public int delete(int id) {
+        System.out.println(">>> Service delete()");
+        
+        return dao.deleteById(id);
+    }
+
+    public int update(String title, String content, int id) {
+        System.out.println(">>> Service update()");
+
+        return dao.update(title, content, id);
     }
     
 }

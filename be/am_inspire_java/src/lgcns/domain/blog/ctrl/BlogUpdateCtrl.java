@@ -1,17 +1,22 @@
 package lgcns.domain.blog.ctrl;
 
-import lgcns.domain.blog.domain.dto.BlogRequestDTO;
 import lgcns.domain.blog.service.BlogService;
-import lombok.Builder;
 
-@Builder
 public class BlogUpdateCtrl {
+
+    private BlogService service;
+
+    public BlogUpdateCtrl() {
+        service = new BlogService();
+    }
+
+    public BlogUpdateCtrl(BlogService service) {
+        this.service = service;
+    }
     
-    public int update(BlogRequestDTO request) {
+    public int update(String title, String content, int id) {
         System.out.println(">>> Controller update()");
 
-        BlogService service = BlogService.builder().build();
-
-        return service.update(request);
+        return service.update(title, content, id);
     }
 }
