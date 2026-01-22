@@ -1,0 +1,13 @@
+spring:
+    config:
+        activate:
+            on-profile: dev
+
+    datasource:
+        driver-class-name: org.mariadb.jdbc.Driver
+        url: jdbc:mariadb://localhost:3306/inspire
+        username: root
+        password: akfldkqlqjs
+
+mybatis:
+    mapper-locations: /mappers/**/*Mapper.xml  # 해당 위치의 Mapper를 자동으로 읽도록 wildcard mapping
