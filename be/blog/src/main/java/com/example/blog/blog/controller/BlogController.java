@@ -20,9 +20,14 @@ public class BlogController {
     public ResponseEntity<Void> write(@RequestBody BlogRequestDTO request) {
         log.info(">>> BlogController write");
 
-        blogService.write(request);
+        int flag = blogService.write(request);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        if (flag != 0) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @GetMapping("/read/{blogId}")
     public ResponseEntity<BlogResponseDTO> read(@PathVariable Integer blogId) {

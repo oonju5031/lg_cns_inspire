@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BlogMapper {
-    void insertRow(BlogRequestDTO request);
+    int insertRow(BlogRequestDTO request);
     BlogResponseDTO readRow(Integer blogId);
     int deleteRow(Integer blogId);
 }

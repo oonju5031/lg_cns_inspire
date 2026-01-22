@@ -14,10 +14,10 @@ public class BlogService {
 
     private final BlogMapper blogMapper;
 
-    public void write(BlogRequestDTO requestDTO) {
+    public int write(BlogRequestDTO requestDTO) {
         log.info(">>> BlogService write");
 
-        blogMapper.insertRow(requestDTO);
+        return blogMapper.insertRow(requestDTO);
     }
 
     public BlogResponseDTO read(int blogId) {
