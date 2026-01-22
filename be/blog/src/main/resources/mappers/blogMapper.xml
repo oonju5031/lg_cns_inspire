@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.blog.blog.repository.BlogMapper">
-    <insert id="insertRow" parameterType="blogRequestDTO">
+    <insert id="insertRow"
+            parameterType="blogRequestDTO">
         INSERT INTO blog (title, content, email)
         VALUES      (#{title}, #{content}, #{email})
     </insert>

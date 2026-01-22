@@ -3,7 +3,6 @@
 
 <configuration>
     <typeAliases>
-        <typeAlias alias="blogRequestDTO"
-                   type="com.example.blog.blog.domain.dto.BlogRequestDTO" />
+        <package name="com.example.blog.blog.domain.dto" />
     </typeAliases>
 </configuration>
