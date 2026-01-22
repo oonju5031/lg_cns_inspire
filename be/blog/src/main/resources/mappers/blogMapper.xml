@@ -18,4 +18,10 @@
         FROM    blog
         WHERE   blog_id = #{blogId}
     </select>
+
+    <delete id="deleteRow"
+            parameterType="int">
+        DELETE FROM blog
+        WHERE       blog_id = #{blogId}
+    </delete>
 </mapper>

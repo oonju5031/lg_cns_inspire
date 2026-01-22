@@ -25,4 +25,11 @@ public class BlogService {
 
         return blogMapper.readRow(blogId);
     }
+
+    public int delete(int blogId) {
+        log.info(">>> BlogService delete: {}", blogId);
+
+        return blogMapper.deleteRow(blogId);
+    }
+
 }

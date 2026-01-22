@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface BlogMapper {
     void insertRow(BlogRequestDTO request);
     BlogResponseDTO readRow(Integer blogId);
+    int deleteRow(Integer blogId);
 }

@@ -36,4 +36,17 @@ public class BlogController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping("/delete/{blogId}")
+    public ResponseEntity<Void> delete(@PathVariable Integer blogId) {
+        log.info(">>> BlogController delete: {}", blogId);
+
+        int flag = blogService.delete(blogId);
+
+        if (flag != 0) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 }
