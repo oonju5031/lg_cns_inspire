@@ -1,6 +1,7 @@
 package com.example.blog.blog.controller;
 
 import com.example.blog.blog.domain.dto.BlogRequestDTO;
+import com.example.blog.blog.domain.dto.BlogResponseDTO;
 import com.example.blog.blog.service.BlogService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,5 +23,17 @@ public class BlogController {
         blogService.write(request);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
+
+    @GetMapping("/read/{blogId}")
+    public ResponseEntity<BlogResponseDTO> read(@PathVariable Integer blogId) {
+        log.info(">>> BlogController read: {}", blogId);
+
+        BlogResponseDTO response = blogService.read(blogId);
+
+        if (response != null) {
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

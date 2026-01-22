@@ -7,4 +7,15 @@
         INSERT INTO blog (title, content, email)
         VALUES      (#{title}, #{content}, #{email})
     </insert>
+
+    <select id="readRow"
+            parameterType="int"
+            resultType="blogResponseDTO">
+        SELECT  blog_id,
+                title,
+                content,
+                email
+        FROM    blog
+        WHERE   blog_id = #{blogId}
+    </select>
 </mapper>
