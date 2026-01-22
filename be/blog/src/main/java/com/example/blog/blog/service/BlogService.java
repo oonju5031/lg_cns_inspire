@@ -1,5 +1,7 @@
 package com.example.blog.blog.service;
 
+import com.example.blog.blog.domain.dto.BlogRequestDTO;
+import com.example.blog.blog.repository.BlogMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -8,4 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class BlogService {
+
+    private final BlogMapper blogMapper;
+
+    public void write(BlogRequestDTO requestDTO) {
+        log.info(">>> BlogService write");
+
+        blogMapper.insertRow(requestDTO);
+    }
 }

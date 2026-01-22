@@ -11,3 +11,4 @@ spring:
 
 mybatis:
     mapper-locations: /mappers/**/*Mapper.xml  # 해당 위치의 Mapper를 자동으로 읽도록 wildcard mapping
+    config-location:  classpath:/mappers/config/mybatis-config.xml
