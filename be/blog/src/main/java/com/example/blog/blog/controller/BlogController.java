@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -54,4 +56,30 @@ public class BlogController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<BlogResponseDTO>> list() {
+        log.info(">>> BlogController list");
+
+        List<BlogResponseDTO> list = blogService.list();
+        if (!list.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.OK).body(list);
+        } else {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
+    }
+
+    @PutMapping("/update/{blogId}")
+    public ResponseEntity<Void> update(@PathVariable Integer blogId, @RequestBody BlogRequestDTO request) {
+        log.info(">>> BlogController update: {}", blogId);
+
+        int flag = blogService.update(blogId, request);
+
+        if (flag != 0) {
+            return ResponseEntity.status(HttpStatus.OK).body(null);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
 }

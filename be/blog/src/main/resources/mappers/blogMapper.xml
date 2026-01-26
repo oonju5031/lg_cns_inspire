@@ -24,4 +24,22 @@
         DELETE FROM blog
         WHERE       blog_id = #{blogId}
     </delete>
+
+    <select id="selectRow"
+            resultType="blogResponseDTO">
+        SELECT  blog_id,
+                title,
+                content,
+                email
+        FROM    blog
+    </select>
+
+    <update id="updateRow"
+            parameterType="blogRequestDTO">
+        UPDATE  blog
+        SET     title = #{title},
+                content = #{content}
+        WHERE   blog_id = #{blogId}
+    </update>
+
 </mapper>
