@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Slf4j
+@RequestMapping("/blogs")
 @RestController
 @RequiredArgsConstructor
 public class BlogController {
