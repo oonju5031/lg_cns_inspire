@@ -9,6 +9,13 @@ spring:
         username: root
         password: akfldkqlqjs
 
+    data:
+        redis:
+            host: localhost
+            port: 6379
+            password:
+            timeout: 6000ms
+
 mybatis:
     mapper-locations: /mappers/**/*Mapper.xml  # 해당 위치의 Mapper를 자동으로 읽도록 wildcard mapping
     config-location:  classpath:/mappers/config/mybatis-config.xml

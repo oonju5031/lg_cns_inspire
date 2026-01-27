@@ -32,7 +32,7 @@ public class UserController {
 
     @ApiResponses(
         {
-            @ApiResponse(responseCode="201" , description="데이터 입력 성공"),
+            @ApiResponse(responseCode="200" , description="데이터 입력 성공"),
             @ApiResponse(responseCode="400" , description="잘못된 요청")
         }
     )
@@ -93,6 +93,8 @@ public class UserController {
         
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer " + map.get("access"));
+        headers.add("Refresh-Token", (String) map.get("refresh"));
+        headers.add("Access-Control-Expose-Headers", "Authorization, Refresh-Token");
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .headers(headers)
