@@ -6,6 +6,8 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
     <typeAliases>
-        <package name="com.example.blog.blog.domain.dto" />
+        <package name="com.example.blog.blog.domain.dto"/>
+        <package name="com.example.blog.comment.domain.dto"/>
+        <package name="com.example.blog.user.domain.dto"/>
     </typeAliases>
 </configuration>

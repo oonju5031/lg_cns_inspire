@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.example.blog.comment.repository.CommentMapper">
+
+    <!-- insertRow --> 
+    <insert id="insertRow"
+            parameterType="CommentRequestDTO"
+            useGeneratedKeys="true"
+            keyProperty="commentId">
+        INSERT INTO COMMENT(CONTENT, BLOG_ID)
+        VALUES( #{content} , #{blogId})
+    </insert>    
+
+    <!-- selectRow --> 
+    <select id="selectRow"
+            parameterType="java.lang.Integer"
+            resultType="CommentResponseDTO">
+        SELECT  COMMENT_ID, CONTENT, BLOGID
+        FROM    COMMENT
+        WHERE   BLOG_ID = #{blogId}
+        ORDER BY COMMENT_ID DESC
+    </select>
+
+    <!-- deleteRow --> 
+
+    <delete id="deleteRow"
+            parameterType="java.lang.Integer">
+        DELETE  FROM COMMENT
+        WHERE   COMMENT_ID = #{commentId}
+    </delete>
+</mapper>
