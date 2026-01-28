@@ -3,6 +3,8 @@ package com.example.blog.blog.service;
 import com.example.blog.blog.domain.dto.BlogRequestDTO;
 import com.example.blog.blog.domain.dto.BlogResponseDTO;
 import com.example.blog.blog.repository.BlogMapper;
+import com.example.blog.comment.domain.dto.CommentResponseDTO;
+import com.example.blog.comment.repository.CommentMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ import java.util.Map;
 public class BlogService {
 
     private final BlogMapper blogMapper;
+    private final CommentMapper commentMapper;
 
     @Transactional
     public int write(BlogRequestDTO requestDTO) {
@@ -31,7 +34,15 @@ public class BlogService {
     public BlogResponseDTO read(int blogId) {
         log.info(">>> BlogService read: {}", blogId);
 
-        return blogMapper.readRow(blogId);
+        BlogResponseDTO blog = blogMapper.readRow(blogId);
+        if (blog == null) {
+            throw new RuntimeException("게시글 없음");
+        }
+
+        List<CommentResponseDTO> comments = commentMapper.selectRow(blog.getBlogId());
+        blog.setComments(comments);
+
+        return blog;
     }
 
     @Transactional

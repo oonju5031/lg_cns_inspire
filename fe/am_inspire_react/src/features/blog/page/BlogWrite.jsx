@@ -52,6 +52,9 @@ const BlogWrite = () => {
 
     // token 정보 가져오기
     const email = localStorage.getItem("token");
+    console.log(">>> BlogIndex token email:", email);
+    const at    = localStorage.getItem("access_token");
+    console.log(">>> BlogIndex token access:", at);
 
     const saveHandler = async (title, content) => {
     
@@ -59,11 +62,15 @@ const BlogWrite = () => {
 
         const id = Date.now();
 
-        await api.post("/blogs", {
-            id, title, content
+        await api.post("/blogs/write", {
+            email: email,
+            title: title,
+            content: content
+        }, {
+            headers: {Authorization: at ? at : ""}
         })
         .then( (response) => {
-            console.log(">>> then:", response.data);
+            console.log(">>> then:", response.status);
             moveUrl("/blog/index");
         })
         .catch( (error) => {

@@ -100,23 +100,25 @@ const SignIn = () => {
         e.preventDefault();
 
         try {
-            const response = await api.get("/users" , {
-                params: {
-                    email: form.email,
-                    password: form.password
-                }
+            const response = await api.post("/users/login" , {
+                email: form.email,
+                password: form.password
             });
 
             console.log(">>> axios success: ", response);
 
             if (response.status === 200) {
-              // 인증된 사용자 정보(token)를 공유하기 위하여 localStorage에 데이터를 추가한다.
-              const email = response.data[0].email;
-              console.log(">>> token:", email);
-              localStorage.setItem("token", email);
-            }
+                // 인증된 사용자 정보(token)를 공유하기 위하여 localStorage에 데이터를 추가한다.
+                const email = response.data.email;
+                console.log(">>> token email:", email);
+                localStorage.setItem("token", email);
 
-            moveUrl("/blog/index");
+                const at = response.headers.get("authorization");
+                console.log(">>> at:", at);
+                localStorage.setItem("access_token", at);
+
+                moveUrl("/blog/index");
+            }
 
         } catch( err ) {
             console.log(">>> axios err: " , err);

@@ -54,10 +54,15 @@ const BlogIndex = () => {
 
     // token 정보 가져오기
     const email = localStorage.getItem("token");
+    console.log(">>> BlogIndex token email:", email);
+    const at    = localStorage.getItem("access_token");
+    console.log(">>> BlogIndex token access:", at);
 
     const loadData = async () => {
         try {
-            const response = await api.get("/blogs");
+            const response = await api.get("/blogs/list", {
+                headers: {Authorization: at ? at : ""}  // 헤더에 access token 추가
+            });
 
             console.log(">>> BlogIndex blogs data: ", response.data);
             setAry(response.data);

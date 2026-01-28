@@ -62,11 +62,11 @@ import reportWebVitals from './reportWebVitals';
 /* === 이벤트 처리 END === */
 
 /* === Router DOM START === */
-// import BlogApp from './BlogApp' ;
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <BlogApp />
-// );
+import BlogApp from './BlogApp' ;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BlogApp />
+);
 /* === Router DOM END === */
 
 /* === Context API START === */
@@ -78,11 +78,11 @@ import reportWebVitals from './reportWebVitals';
 /* === Context API END === */
 
 /* === Open API START === */
-import WeatherPage from './pages/openapi/WeatherPage' ;
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <WeatherPage />
-);
+// import WeatherPage from './pages/openapi/WeatherPage' ;
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <WeatherPage />
+// );
 /* === Open API END === */
 
 // If you want to start measuring performance in your app, pass a function

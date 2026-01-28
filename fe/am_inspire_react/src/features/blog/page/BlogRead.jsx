@@ -74,8 +74,8 @@ const WelcomeMessage = styled.div`
 const BlogRead = () => {
 
     // useParams: URL에서 전달되는 파라미터를 전달받을 수 있는 hook
-    const {id} = useParams();
-    console.log(">>> request parameter:", id);
+    const {blogId} = useParams();
+    console.log(">>> request parameter:", blogId);
 
     const [blog,     setBlog]     = useState({});  // 빈 객체로 초기화
     const [comments, setComments] = useState([]);  // 빈 배열로 초기화
@@ -83,9 +83,12 @@ const BlogRead = () => {
 
     // token 정보 가져오기
     const email = localStorage.getItem("token");
+    console.log(">>> BlogIndex token email:", email);
+    const at    = localStorage.getItem("access_token");
+    console.log(">>> BlogIndex token access:", at);
 
     const getBlog = async () => {
-        await api.get(`/blogs/${id}?_embed=comments`)  // Embed를 이용하여 특정 게시글의 댓글을 함께 가져올 수 있다.
+        await api.get(`/blog/read/${blogId}`)  // Embed를 이용하여 특정 게시글의 댓글을 함께 가져올 수 있다.
                 .then( (response) => {
 
                     console.log(response);
@@ -94,7 +97,7 @@ const BlogRead = () => {
 
                     // 댓글이 있는 경우 setBlog()를 다음과 같이 변경하여야 한다.
                     setBlog({
-                        id: response.data.id,
+                        id: response.data.blogId,
                         title: response.data.title,
                         content: response.data.content
                     });

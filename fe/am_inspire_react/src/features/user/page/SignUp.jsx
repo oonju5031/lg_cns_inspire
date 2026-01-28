@@ -114,14 +114,14 @@ const SignUp = () => {
         console.log(">>> signup submit call");
 
         try {
-            const response = await api.post("/users", {
+            const response = await api.post("/users/join", {
                 name: form.name,
                 email: form.email,
                 password: form.password
             });
 
             console.log(">>> axios success: ", response);
-            moveUrl("/login");
+            //moveUrl("/login");
 
         } catch (err) {
             console.log(">>> axios err: ", err);
