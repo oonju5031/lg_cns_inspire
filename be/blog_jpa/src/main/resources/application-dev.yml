@@ -1,3 +1,8 @@
+logging:
+    level:
+        org:
+            springframework: DEBUG
+
 spring:
     config:
         activate:
@@ -17,3 +22,6 @@ spring:
             hibernate:
                 dialect: org.hibernate.dialect.MariaDBDialect
                 format_sql: true
+
+jwt:
+    secret: ${JWT_SECRET_KEY}
