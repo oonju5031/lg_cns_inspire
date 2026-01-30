@@ -1,0 +1,22 @@
+package com.example.blog_jpa.user.domain.dto;
+
+import com.example.blog_jpa.user.domain.entity.UserEntity;
+import lombok.*;
+
+@Builder
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserResponseDTO {
+    private String email, password, name, role;
+
+    public static UserResponseDTO fromEntity(UserEntity entity) {
+        return UserResponseDTO.builder()
+                .email(entity.getEmail())
+                .password(entity.getPassword())
+                .name(entity.getName())
+                .role(entity.getRole())
+                .build();
+    }
+}
