@@ -17,7 +17,7 @@ import java.security.Key;
 import java.util.List;
 
 @Slf4j
-@Component
+// @Component  // JWT version
 public class JwtFilter implements Filter {
 
     @Value("${jwt.secret}")

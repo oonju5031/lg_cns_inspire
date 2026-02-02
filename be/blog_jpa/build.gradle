@@ -33,6 +33,12 @@ dependencies {
 	// .env를 통해 보안이 필요한 정보를 github에 공유하지 않고자 함
 	implementation 'io.github.cdimascio:dotenv-java:3.0.0'
 
+	// Spring security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// invalidation (JSR-303 표준: DTO의 데이터 유효성 체크를 돕는 라이브러리)
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:4.0.1'

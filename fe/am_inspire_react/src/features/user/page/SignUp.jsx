@@ -114,7 +114,7 @@ const SignUp = () => {
         console.log(">>> signup submit call");
 
         try {
-            const response = await api.post("/users/join", {
+            const response = await api.post("/users/signup", {
                 name: form.name,
                 email: form.email,
                 password: form.password
