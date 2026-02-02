@@ -8,6 +8,7 @@ import com.example.blog_jpa.user.domain.entity.UserEntity;
 import com.example.blog_jpa.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -22,6 +23,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final JwtProvider jwtProvider;
     private final RefreshTokenService refreshTokenService;
+    private final PasswordEncoder passwordEncoder;
 
     public UserResponseDTO join(UserRequestDTO request) {
         log.info(">>>> UserService signup");
@@ -38,8 +40,12 @@ public class UserService {
 
         log.debug(">> 1. UserService 사용자 조회");
         UserEntity entity = userRepository
-                .findByEmailAndPassword(request.getEmail(), request.getPassword())
-                .orElseThrow(() -> new RuntimeException(">>>> 로그인 실패"));
+                .findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException(">>> 로그인 실패"));
+
+        if (!passwordEncoder.matches(request.getPassword(), entity.getPassword())) {
+            throw new RuntimeException("Incorrect Password.");
+        }
 
         log.debug(">> 2. UserService 토큰 생성");
         // TODO

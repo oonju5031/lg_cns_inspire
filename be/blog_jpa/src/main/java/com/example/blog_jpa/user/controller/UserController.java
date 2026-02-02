@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     @ApiResponses(
             {
@@ -50,6 +52,9 @@ public class UserController {
 
         System.out.println(">>>> user ctrl path : /signup");
         System.out.println(">>>> params : "+ request);
+
+        // 패스워드 해싱
+        request.setPassword(passwordEncoder.encode(request.getPassword()));
 
         UserResponseDTO response = userService.join(request);
 
