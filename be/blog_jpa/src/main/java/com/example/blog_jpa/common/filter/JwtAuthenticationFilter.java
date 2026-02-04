@@ -44,12 +44,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         log.debug(">>> JwtAuthenticationFilter Request Method: {}", method);
 
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
-            response.setStatus(HttpServletResponse.SC_OK);
-//            response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-//            response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-//            response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
-//            response.setHeader("Access-Control-Allow-Headers", "true");
-
             chain.doFilter(request, response);
             return;
         }
@@ -102,5 +96,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (Exception e) {
             log.error("Exception", e);
         }
+
+        chain.doFilter(request, response);
     }
 }

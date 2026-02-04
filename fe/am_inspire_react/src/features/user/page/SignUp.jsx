@@ -121,7 +121,7 @@ const SignUp = () => {
             });
 
             console.log(">>> axios success: ", response);
-            //moveUrl("/login");
+            moveUrl("/login");
 
         } catch (err) {
             console.log(">>> axios err: ", err);

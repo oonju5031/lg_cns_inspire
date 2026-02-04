@@ -40,7 +40,7 @@ public class UserService {
 
         log.debug(">> 1. UserService 사용자 조회");
         UserEntity entity = userRepository
-                .findByEmail(request.getEmail())
+                .findById(request.getEmail())
                 .orElseThrow(() -> new RuntimeException(">>> 로그인 실패"));
 
         if (!passwordEncoder.matches(request.getPassword(), entity.getPassword())) {

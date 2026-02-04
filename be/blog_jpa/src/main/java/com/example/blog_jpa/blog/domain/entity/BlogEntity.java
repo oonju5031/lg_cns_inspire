@@ -34,6 +34,18 @@ public class BlogEntity {
     @JoinColumn(name = "email")
     private UserEntity author;
 
-    @OneToMany(mappedBy = "blog", orphanRemoval = false)
+    // FK 정책: 기본(RESTRICT) -> 댓글이 있는 게시글은 삭제 불가능
+//    @OneToMany(mappedBy = "blog", orphanRemoval = false)
+//    private List<CommentEntity> comments = new ArrayList<>();
+
+    // FK 정책: CASCADE -> 댓글이 있는 게시글 삭제 시 해당 게시글의 댓글도 삭제
+    @OneToMany( mappedBy = "blog",
+                cascade = CascadeType.ALL,
+                orphanRemoval = true)
     private List<CommentEntity> comments = new ArrayList<>();
+
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }

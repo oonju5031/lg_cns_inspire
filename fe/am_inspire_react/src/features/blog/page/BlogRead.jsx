@@ -162,7 +162,7 @@ const BlogRead = () => {
      */
     const commentDeleteHandler = async (id) => {
 
-        await api.delete(`/comments/${id}`)
+        await api.delete(`/blogs/comments/delete/${id}`)
         .then( (response) => {
 
             if (response.status === 200 || response.status === 204) {
