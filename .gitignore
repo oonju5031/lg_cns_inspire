@@ -1,3 +1,4 @@
 ﻿be/am_inspire_java/bin/**
 .idea/**
 *.iml
+*.env
