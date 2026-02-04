@@ -23,5 +23,12 @@ spring:
                 dialect: org.hibernate.dialect.MariaDBDialect
                 format_sql: true
 
+    ai:
+        openai:
+            model: ${OPEN_AI_MODEL}
+            api:
+                key: ${OPEN_AI_KEY}
+                url: ${OPEN_AI_URL}
+
 jwt:
     secret: ${JWT_SECRET_KEY}
