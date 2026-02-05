@@ -3,6 +3,7 @@ package com.example.blog_jpa.openai.controller;
 import com.example.blog_jpa.openai.domain.ChatResponseDTO;
 import com.example.blog_jpa.openai.domain.MessageRequestDTO;
 import com.example.blog_jpa.openai.domain.MessageResponseDTO;
+import com.example.blog_jpa.openai.domain.QuizResponseDTO;
 import com.example.blog_jpa.openai.service.ChatService;
 import com.example.blog_jpa.openai.service.MessageService;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +48,14 @@ public class ChatController {
         log.info(">>> ChatController generateMessage: {}", requestDTO);
 
         return messageService.generateMessage(requestDTO);
+    }
+
+    // 2세대 API
+    @PostMapping("/quiz")
+    public ResponseEntity<QuizResponseDTO> quiz(@RequestParam String subject) {
+        log.info(">>> ChatController quiz");
+
+        return ResponseEntity.ok().body(chatService.quiz(subject));
     }
 
 }
