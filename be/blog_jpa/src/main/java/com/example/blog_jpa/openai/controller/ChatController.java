@@ -6,7 +6,10 @@ import com.example.blog_jpa.openai.domain.MessageResponseDTO;
 import com.example.blog_jpa.openai.domain.QuizResponseDTO;
 import com.example.blog_jpa.openai.service.ChatService;
 import com.example.blog_jpa.openai.service.MessageService;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -56,6 +59,30 @@ public class ChatController {
         log.info(">>> ChatController quiz");
 
         return ResponseEntity.ok().body(chatService.quiz(subject));
+    }
+
+    @PostMapping("/chatBot")
+    public ChatResponse chatBot(@RequestBody ChatRequest request) {
+        log.info(">>> ChatController chatBot");
+
+        return ChatResponse
+                .builder()
+                .reply( chatService.chatBot(request.getMessage()) )
+                .build() ;
+    }
+
+    @Builder
+    @Getter
+    @ToString
+    public static class ChatRequest {
+        private String message;
+    }
+
+    @Builder
+    @Getter
+    @ToString
+    public static class ChatResponse {
+        private String reply;
     }
 
 }

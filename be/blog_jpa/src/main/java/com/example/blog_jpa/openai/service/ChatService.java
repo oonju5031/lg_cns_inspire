@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -183,5 +186,35 @@ public class ChatService {
         }
 
         return null;
+    }
+
+    public String chatBot(String message) {
+        log.info(">>> ChatService chatBot: {}", message);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(key);
+        headers.setContentType(org.springframework.http.MediaType.APPLICATION_JSON);
+
+        Map<String, Object> body = Map.of(
+                "model", model,
+                "messages", List.of(
+                        Map.of("role", "system", "content", "your role is a helpful assistant"),
+                        Map.of("role", "user", "content", message)
+                )
+        );
+        HttpEntity<Map<String , Object>> request = new HttpEntity<>(body, headers);
+
+        // Open AI 요청
+        ResponseEntity<Map> response = restTemplate
+                .postForEntity( url, request, Map.class);
+
+        // 응답 추출
+        log.info(">>> response: {}", response);
+        List<Map<String, Object>> choices =  (List<Map<String, Object>>)response.getBody().get("choices");
+
+        // content 추출
+        Map<String, Object> msg = (Map<String, Object>)choices.get(0).get("message");
+        return (String)msg.get("content");
+
     }
 }
